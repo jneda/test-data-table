@@ -1,34 +1,37 @@
 import DataTable from "react-data-table-component";
 import "./App.css";
 
-const data = [
+// dummy data for testing
+const matchings = [
   {
     id: 1,
-    name: "Anthony Houlala",
-    friends: [
-      { id: 2, name: "Pascaline Démonte-Pneu" },
-      { id: 42, name: "Serge-Henri Camus" },
+    customer: "Anthony Houlala",
+    stocks: [
+      { id: 2, seller: "Pascaline Démonte-Pneu" },
+      { id: 42, seller: "Serge-Henri Camus" },
     ],
   },
   {
     id: 2,
-    name: "Pascaline Démonte-Pneu",
-    friends: [
-      { id: 1, name: "Anthony Houlala" },
-      { id: 42, name: "Serge-Henri Camus" },
+    customer: "Pascaline Démonte-Pneu",
+    stocks: [
+      { id: 1, seller: "Anthony Houlala" },
+      { id: 42, seller: "Serge-Henri Camus" },
     ],
   },
 ];
 
 function SubTable(props) {
+  // logging
   console.log("SubTable props");
   console.log(props);
-  const friends = props.data.friends;
+
+  const matchings = props.data.stocks;
   const columns = [
     { name: "id", selector: (row) => row.id },
-    { name: "name", selector: (row) => row.name },
+    { name: "seller", selector: (row) => row.seller },
   ];
-  return <DataTable columns={columns} data={friends} />;
+  return <DataTable columns={columns} data={matchings} />;
 }
 
 function App() {
@@ -37,9 +40,9 @@ function App() {
       <DataTable
         columns={[
           { name: "id", selector: (row) => row.id },
-          { name: "name", selector: (row) => row.name },
+          { name: "customer", selector: (row) => row.customer },
         ]}
-        data={data}
+        data={matchings}
         expandableRows
         expandableRowsComponent={SubTable}
       />
