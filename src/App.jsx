@@ -21,6 +21,7 @@ const matchings = [
   },
 ];
 
+// sub table component for displaying matching stocks under each request
 function SubTable(props) {
   // logging
   console.log("SubTable props");
@@ -34,6 +35,7 @@ function SubTable(props) {
   return <DataTable columns={columns} data={matchings} />;
 }
 
+// main table
 function App() {
   return (
     <div className="App">
